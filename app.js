@@ -1,9 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
 //Load models
 require('./models/Expense');
+require('./models/User');
+
+//Passport Config
+require('./config/passport')(passport);
 
 //Load keys
 const keys = require('./config/keys');
@@ -19,8 +25,20 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Express Session Middleware
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+}));
+
+//Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 //Load expenses routes
 require('./routes/expensesRoutes')(app);
+require('./routes/usersRoutes')(app);
 
 const port = process.env.PORT || 5000;
 
