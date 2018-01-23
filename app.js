@@ -20,6 +20,10 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get('/api/hello', (req, res) => {
+  res.send('hello');
+});
+
 app.get('/api/expenses', (req, res) => {
   Expense.find()
     .then(expenses => {

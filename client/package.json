@@ -2,7 +2,13 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": {
+    "/api/*": {
+      "target": "http://localhost:5000"
+    }
+  },
   "dependencies": {
+    "axios": "^0.17.1",
     "moment": "^2.20.1",
     "numeral": "^2.0.6",
     "react": "^16.2.0",

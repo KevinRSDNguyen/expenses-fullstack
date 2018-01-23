@@ -7,7 +7,7 @@ const ExpenseList = ({ expenses }) => {
   const output = expenses.length === 0 ?
     <p>No expenses</p> :
     expenses.map(expense => {
-      return <ExpenseListItem key={expense.id} {...expense} />
+      return <ExpenseListItem key={expense._id} {...expense} />
     });
   return (
     <div>

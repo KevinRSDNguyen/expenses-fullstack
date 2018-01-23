@@ -1,4 +1,5 @@
 import uuid from 'uuid';
+import axios from 'axios';
 
 export const addExpense = ({ description, note, amount, createdAt }) => {
   return {
@@ -26,4 +27,23 @@ export const removeExpense = (id) => {
     type: 'REMOVE_EXPENSE',
     id
   };
+};
+
+export const setExpenses = (expenses) => {
+  return {
+    type: 'SET_EXPENSES',
+    expenses
+  };
+};
+
+export const startSetExpenses = () => {
+  return dispatch => {
+    axios.get('/api/expenses')
+    .then(({data}) => {
+      dispatch(setExpenses(data));
+    })
+    .catch((error) => {
+      alert('could not fetch expenses');
+    });
+};
 };
