@@ -1,16 +1,21 @@
-import uuid from 'uuid';
 import axios from 'axios';
 
-export const addExpense = ({ description, note, amount, createdAt }) => {
+export const addExpense = (expense) => {
   return {
     type: 'ADD_EXPENSE',
-    expense: {
-      id: uuid(),
-      description,
-      note,
-      amount,
-      createdAt
-    }
+    expense
+  };
+};
+
+export const startAddExpense = (expenseData) => { 
+  return (dispatch, getState) => {
+    axios.post('/api/expenses', expenseData)
+    .then(({data}) => {
+      dispatch(addExpense(data));
+    })
+    .catch(err => {
+      alert('Was unable to add expense');
+    });
   };
 };
 

@@ -40,8 +40,8 @@ app.post('/api/expenses', (req, res) => {
   };
   new Expense(newExpense)
     .save()
-    .then(idea => {
-      res.send('Expense saved');
+    .then(expense => {
+      res.send(expense);
     })
     .catch(err => {
       res.status(422).send(err);
