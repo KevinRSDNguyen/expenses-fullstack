@@ -19,7 +19,7 @@ export default (state = expensesReducerDefaultState, action) => {
       });
     case 'REMOVE_EXPENSE':
       return state.filter(expense => {
-        return expense.id !== action.id;
+        return expense._id !== action.id;
       });
     case 'SET_EXPENSES':
       return action.expenses;

@@ -3,10 +3,10 @@ import {Link} from 'react-router-dom';
 import moment from 'moment';
 import numeral from 'numeral';
 
-const ExpenseListItem = ({description, amount, createdAt, id}) => {
+const ExpenseListItem = ({description, amount, createdAt, _id}) => {
   return (
     <div>
-      <Link to={`/edit/${id}`}>
+      <Link to={`/edit/${_id}`}>
         <h3>{description}</h3>
       </Link>
       <p>

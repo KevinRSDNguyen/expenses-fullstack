@@ -34,6 +34,18 @@ export const removeExpense = (id) => {
   };
 };
 
+export const startRemoveExpense = (id) => {
+  return (dispatch, getState) => {
+    axios.delete(`/api/expenses/${id}`)
+    .then(({data}) => {
+      dispatch(removeExpense(id));
+    })
+    .catch((error) => {
+      alert('could not delete that expense');
+    });
+  };
+};
+
 export const setExpenses = (expenses) => {
   return {
     type: 'SET_EXPENSES',

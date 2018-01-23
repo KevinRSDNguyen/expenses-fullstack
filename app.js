@@ -20,10 +20,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/api/hello', (req, res) => {
-  res.send('hello');
-});
-
+//Fetch expenses
 app.get('/api/expenses', (req, res) => {
   Expense.find()
     .then(expenses => {
@@ -31,6 +28,7 @@ app.get('/api/expenses', (req, res) => {
     });
 });
 
+//Create an expense
 app.post('/api/expenses', (req, res) => {
   const newExpense = {
     description: req.body.description,
@@ -42,6 +40,17 @@ app.post('/api/expenses', (req, res) => {
     .save()
     .then(expense => {
       res.send(expense);
+    })
+    .catch(err => {
+      res.status(422).send(err);
+    });
+});
+
+//Delete an expense
+app.delete('/api/expenses/:id', (req, res) => {
+  Expense.remove({_id: req.params.id})
+    .then(() => {
+      res.send('Expense sucessfully removed');
     })
     .catch(err => {
       res.status(422).send(err);
