@@ -57,6 +57,27 @@ app.delete('/api/expenses/:id', (req, res) => {
     });
 });
 
+//Edit an expense
+app.put('/api/expenses/:id', (req, res) => {
+  Expense.findOne({_id: req.params.id})
+  .then(expense => {
+
+    //New Values
+    expense.description = req.body.description;
+    expense.note = req.body.note;
+    expense.amount = req.body.amount;
+    expense.createdAt = req.body.createdAt;
+
+    expense.save()
+    .then(expense => {
+      res.send(expense);
+    })
+    .catch(err => {
+      res.status(422).send(err);
+    });
+  });
+});
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {

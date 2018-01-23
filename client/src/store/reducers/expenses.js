@@ -8,7 +8,7 @@ export default (state = expensesReducerDefaultState, action) => {
       return [...state, action.expense];
     case 'EDIT_EXPENSE':
       return state.map(expense => {
-        if (expense.id === action.id) {
+        if (expense._id === action.id) {
           return {
             ...expense,
             ...action.updates

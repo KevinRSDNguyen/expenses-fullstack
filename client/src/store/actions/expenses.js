@@ -27,6 +27,18 @@ export const editExpense = (id, updates) => {
   };
 };
 
+export const startEditExpense = (id, updates) => {
+  return (dispatch, getState) => {
+    axios.put(`/api/expenses/${id}`, updates)
+    .then(expense => {
+      dispatch(editExpense(id, updates));
+    })
+    .catch((error) => {
+      alert('could not update that expense');
+    });
+  };
+};
+
 export const removeExpense = (id) => {
   return {
     type: 'REMOVE_EXPENSE',
