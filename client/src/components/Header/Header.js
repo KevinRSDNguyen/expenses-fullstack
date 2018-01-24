@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
-import {startSetExpenses} from './../../store/actions/expenses';
+import { Link, withRouter } from 'react-router-dom';
+import { startSetExpenses } from './../../store/actions/expenses';
 import { connect } from 'react-redux';
+import './Header.css';
 
 class Header extends Component {
   componentDidMount() {
@@ -9,17 +10,17 @@ class Header extends Component {
   }
   render() {
     return (
-      <header>
-        <h1>Expensify</h1>
-        <NavLink to="/dashboard" activeClassName="is-active" exact>
-          Dashboard
-        </NavLink>
-        <NavLink to="/create" activeClassName="is-active" >
-          Create expense
-        </NavLink>
-        <button>
-          <a href="/api/logout">Logout</a>
-        </button>
+      <header className="header">
+        <div className="content-container">
+          <div className="header__content">
+            <Link className="header__title" to="/dashboard" >
+              <h1>Expensify</h1>
+            </Link>
+            <button className="button button--link">
+              <a href="/api/logout" className="nostyle">Log out</a>
+            </button>
+          </div>
+        </div>
       </header>
     );
   }

@@ -17,6 +17,14 @@ button {
   cursor: pointer;
 }
 
+.button--link {
+  background: none;
+}
+
+.button--secondary {
+  background: #888888;
+}
+
 button:disabled {
   cursor: default;
 }
@@ -28,11 +36,16 @@ button:disabled {
 a.nostyle:link {
   text-decoration: inherit;
   color: inherit;
-  cursor: auto;
 }
 
 a.nostyle:visited {
   text-decoration: inherit;
   color: inherit;
-  cursor: auto;
 }
+
+.content-container {
+  margin: 0 auto;
+  padding: 0 1.6rem;
+  max-width: 80rem;
+}
+
