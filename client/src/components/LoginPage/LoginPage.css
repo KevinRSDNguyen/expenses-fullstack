@@ -1,0 +1,31 @@
+.box-layout {
+  align-items: center;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/d/d4/New_York_City_at_night_HDR_edit1.jpg');
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.box-layout__box {
+  background: rgba(255, 255, 255, 0.85);;
+  border-radius: 3px;
+  padding: 3.2rem 1.6rem;
+  text-align: center;
+  width: 25rem;
+}
+
+.box-layout__title {
+  margin: 0 0 1.6rem 0;
+  line-height: 1;
+}
+
+.button {
+  background: #1c88bf;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 300;
+  padding: 1.2rem;
+}
