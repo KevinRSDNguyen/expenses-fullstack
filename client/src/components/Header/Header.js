@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import {startSetExpenses} from './../../store/actions/expenses';
 import { connect } from 'react-redux';
 
@@ -11,8 +11,12 @@ class Header extends Component {
     return (
       <header>
         <h1>Expensify</h1>
-        <NavLink to="/dashboard" activeClassName="is-active" exact={true}>Dashboard</NavLink>
-        <NavLink to="/create" activeClassName="is-active">Create expense</NavLink>
+        <NavLink to="/dashboard" activeClassName="is-active" exact={true}>
+          Dashboard
+        </NavLink>
+        <NavLink to="/create" activeClassName="is-active" >
+          Create expense
+        </NavLink>
         <button>
           <a href="/api/logout">Logout</a>
         </button>
@@ -27,4 +31,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Header);
+export default withRouter(connect(null, mapDispatchToProps)(Header));
