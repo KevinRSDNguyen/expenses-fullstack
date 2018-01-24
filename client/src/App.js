@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUser } from './store/actions/auth';
-
 import Aux from './hoc/Auxx/Auxx';
 import Header from './components/Header/Header';
 import ExpenseDashboardPage from './components/ExpenseDashboardPage/ExpenseDashboardPage';
 import AddExpensePage from './containers/AddExpensePage/AddExpensePage';
 import EditExpensePage from './containers/EditExpensePage/EditExpensePage';
-import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import LoginPage from './components/LoginPage/LoginPage';
 
 import './App.css';
