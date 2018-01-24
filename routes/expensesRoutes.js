@@ -1,22 +1,25 @@
 const mongoose = require('mongoose');
 const Expense = mongoose.model('expenses');
+const requireLogin = require('./../middleware/requireLogin');
 
 module.exports = app => {
   //Fetch expenses
-  app.get('/api/expenses', (req, res) => {
-    Expense.find()
+  app.get('/api/expenses', requireLogin, (req, res) => {
+    Expense.find({user: req.user.id})
       .then(expenses => {
         res.send(expenses);
       });
   });
 
   //Create an expense
-  app.post('/api/expenses', (req, res) => {
+  app.post('/api/expenses', requireLogin, (req, res) => {
+    const {description, amount, note, createdAt} = req.body;
     const newExpense = {
-      description: req.body.description,
-      amount: req.body.amount,
-      note: req.body.note,
-      createdAt: req.body.createdAt
+      description,
+      amount,
+      note,
+      createdAt,
+      user: req.user.id
     };
     new Expense(newExpense)
       .save()
@@ -29,7 +32,7 @@ module.exports = app => {
   });
 
   //Delete an expense
-  app.delete('/api/expenses/:id', (req, res) => {
+  app.delete('/api/expenses/:id', requireLogin, (req, res) => {
     Expense.remove({_id: req.params.id})
       .then(() => {
         res.send('Expense sucessfully removed');
@@ -40,7 +43,7 @@ module.exports = app => {
   });
 
   //Edit an expense
-  app.put('/api/expenses/:id', (req, res) => {
+  app.put('/api/expenses/:id', requireLogin, (req, res) => {
     Expense.findOne({_id: req.params.id})
     .then(expense => {
 
