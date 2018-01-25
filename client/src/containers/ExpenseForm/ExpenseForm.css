@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-.form * {
+.form > * {
   margin-bottom: 1.6rem;
 }
 

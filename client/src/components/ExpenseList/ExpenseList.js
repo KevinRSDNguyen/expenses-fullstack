@@ -18,7 +18,7 @@ const ExpenseList = (props) => (
         </div>
       ) : (
           props.expenses.map((expense) => (
-            <ExpenseListItem key={expense.id} {...expense} />
+            <ExpenseListItem key={expense._id} {...expense} />
           ))
         )
       }
