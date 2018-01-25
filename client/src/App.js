@@ -19,7 +19,7 @@ class App extends Component {
     let routes = (
       <Switch>
         <Route path='/' exact component={LoginPage} />
-        <Redirect to='/' />
+        {/* <Redirect to='/' /> */}
       </Switch>
     );
     if (this.props.isAuthenticated) {
