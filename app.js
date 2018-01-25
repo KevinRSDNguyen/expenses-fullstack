@@ -12,7 +12,7 @@ require('./models/User');
 //Passport Config
 require('./config/passport');
 
-// mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI);
 
 const app = express();
@@ -33,8 +33,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Load expenses routes
-require('./routes/expensesRoutes')(app);
 require('./routes/authRoutes')(app);
+require('./routes/expensesRoutes')(app);
+
 
 if (process.env.NODE_ENV === 'production') {
   //Express will serve up production assets
