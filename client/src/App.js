@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter, Redirect, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUser } from './store/actions/auth';
 import Aux from './hoc/Auxx/Auxx';
@@ -17,17 +17,14 @@ class App extends Component {
   }
   render() {
     let routes = (
-      <BrowserRouter>
       <Switch>
         <Route path='/' exact component={LoginPage} />
         <Redirect to='/' />
       </Switch>
-      </BrowserRouter>
     );
     if (this.props.isAuthenticated) {
       routes = (
         <Aux>
-          <BrowserRouter>
           <Header />
           <Switch>
             <Route path="/dashboard" component={ExpenseDashboardPage} />
@@ -35,7 +32,6 @@ class App extends Component {
             <Route path="/edit/:id" component={EditExpensePage} />
             <Redirect to='/dashboard' />
           </Switch>
-          </BrowserRouter>
         </Aux>
       );
     }
