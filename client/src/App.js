@@ -19,22 +19,24 @@ class App extends Component {
     let routes = (
       <Switch>
         <Route path='/' exact component={LoginPage} />
-        {/* <Redirect to='/' /> */}
+        <Redirect to='/' />
       </Switch>
     );
-    if (this.props.isAuthenticated) {
+    // if (this.props.isAuthenticated) {
       routes = (
         <Aux>
           <Header />
           <Switch>
+          <Route path='/' exact component={LoginPage} />
+        {/* <Redirect to='/' /> */}
             <Route path="/dashboard" component={ExpenseDashboardPage} />
             <Route path="/create" component={AddExpensePage} />
             <Route path="/edit/:id" component={EditExpensePage} />
-            <Redirect to='/dashboard' />
+            {/* <Redirect to='/dashboard' /> */}
           </Switch>
         </Aux>
       );
-    }
+    // }
     return (
       <div>
         {routes}
